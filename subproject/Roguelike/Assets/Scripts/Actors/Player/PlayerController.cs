@@ -78,7 +78,7 @@ namespace Roguelike.Actors.Player
             if (isDashing) return;
 
             float currentSpeed = healthSystem.baseData.baseMoveSpeed;
-            rb.velocity = moveInput * currentSpeed; //потом переписать на linearVelocity
+            rb.linearVelocity = moveInput * currentSpeed; //потом переписать на linearVelocity
         }
 
         private IEnumerator DashRoutine()
@@ -89,7 +89,7 @@ namespace Roguelike.Actors.Player
             gameObject.layer = LayerMask.NameToLayer("Invincible");
 
             float currentSpeed = healthSystem.baseData.baseMoveSpeed;
-            rb.velocity = lastLookDir * (currentSpeed * dashMultiplier);//потом переписать на linearVelocity
+            rb.linearVelocity = lastLookDir * (currentSpeed * dashMultiplier);//потом переписать на linearVelocity
 
             yield return new WaitForSeconds(dashDuration);
 

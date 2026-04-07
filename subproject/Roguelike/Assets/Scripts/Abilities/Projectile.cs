@@ -21,14 +21,14 @@ namespace Roguelike.Abilities
 
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             // Летим туда, куда повернут префаб (задано в AbilityController)
-            rb.velocity = transform.right * speed;
+            rb.linearVelocity = transform.right * speed;
 
             Destroy(gameObject, lifeTime);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            // Игнорируем того, кто запустил снаряд
+            // Игнорируем того, кто запустил снаряд, потому что кто хочет получить сам от себя?
             if (collision.gameObject == source) return;
 
             // Если у объекта есть система здоровья - наносим урон
