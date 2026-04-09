@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 4583adc7499de4c6480c117698678f5f, type: 3}
   m_Name: TestRoom
   m_EditorClassIdentifier: Assembly-CSharp:Roguelike.World.Map:DungeonRoomData
-  roomName: TestRoom
+  roomType: 0
+  roomName: tetsRoom
   roomPosition: {x: 0, y: 0, z: 0}
   description: 
-  roomPrefab: {fileID: 0}
+  roomPrefab: {fileID: 4039453005119764958, guid: 0b0f5b1b84525faafbacf0e546da7f63, type: 3}
