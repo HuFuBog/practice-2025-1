@@ -420,8 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Roguelike.World.Map.DungeonGenerator
   data: {fileID: 11400000, guid: b8af62b766444ba16adb69e0b68d1f97, type: 2}
-  rooms:
-  - {fileID: 11400000, guid: e7131bd2351799e0993423fccfdf2c92, type: 2}
+  roomSpacing: 18
 --- !u!4 &1056114005
 Transform:
   m_ObjectHideFlags: 0
@@ -758,8 +757,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4039453005119764958, guid: 0b0f5b1b84525faafbacf0e546da7f63, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 402794880048093829}
   m_SourcePrefab: {fileID: 100100000, guid: 0b0f5b1b84525faafbacf0e546da7f63, type: 3}
+--- !u!1 &402794880048093828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4039453005119764958, guid: 0b0f5b1b84525faafbacf0e546da7f63, type: 3}
+  m_PrefabInstance: {fileID: 402794880048093827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &402794880048093829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402794880048093828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9884406b880b343baadd62ac685d843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonRoom
+  topDoor: {fileID: 0}
+  bottomDoor: {fileID: 0}
+  leftDoor: {fileID: 0}
+  rightDoor: {fileID: 0}
+  topWall: {fileID: 0}
+  bottomWall: {fileID: 0}
+  leftWall: {fileID: 0}
+  rightWall: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
