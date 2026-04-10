@@ -11,7 +11,7 @@ namespace Roguelike.Actors.Player
         public AbilityData ultimateData;
 
         [Header("Spawn Points")]
-        public Transform projectileSpawnPoint; // Откуда вылетают снаряды
+        public Transform projectileSpawnPoint; // Откуда вылетают снаряды, верхушка посоха или дуло винтовки например
 
         private float attackTimer, skillTimer, ultimateTimer;
 

@@ -83,13 +83,14 @@ namespace Roguelike.Actors.Player
 
         private IEnumerator DashRoutine()
         {
+
             isDashing = true;
             dashTimer = dashCooldown;
-
+            // на слое Invincible персонаж будет "невидим" для атак -> базовая логика рывков
             gameObject.layer = LayerMask.NameToLayer("Invincible");
 
             float currentSpeed = healthSystem.baseData.baseMoveSpeed;
-            rb.linearVelocity = lastLookDir * (currentSpeed * dashMultiplier);//потом переписать на linearVelocity
+            rb.linearVelocity = lastLookDir * (currentSpeed * dashMultiplier);
 
             yield return new WaitForSeconds(dashDuration);
 

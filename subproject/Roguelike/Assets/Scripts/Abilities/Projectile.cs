@@ -5,9 +5,12 @@ using Roguelike.Data;
 
 namespace Roguelike.Abilities
 {
+    // базовый класс для всех игровых сущностей, попадающих под название
+    // <снаряд>, то есть различные пули и им подобные, в будущем переписать все это добро в абстрактный класс!
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class Projectile : MonoBehaviour
     {
+        [Header("Атрибуты")]
         public float speed = 15f;
         public float lifeTime = 3f;
 
@@ -20,7 +23,7 @@ namespace Roguelike.Abilities
             source = caster;
 
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            // Летим туда, куда повернут префаб (задано в AbilityController)
+            // Летим туда, куда повернут префаб (задано в AbilityController, мы там ставим его сразу повернутым в соотвтетствии с логикой определения ближайшей цели)
             rb.linearVelocity = transform.right * speed;
 
             Destroy(gameObject, lifeTime);
@@ -31,7 +34,7 @@ namespace Roguelike.Abilities
             // Игнорируем того, кто запустил снаряд, потому что кто хочет получить сам от себя?
             if (collision.gameObject == source) return;
 
-            // Если у объекта есть система здоровья - наносим урон
+            // Если у объекта есть система здоровья - наносим урон, очевидно это враг
             if (collision.TryGetComponent(out IDamageable target))
             {
                 DamageInfo damage = new DamageInfo(
@@ -44,7 +47,7 @@ namespace Roguelike.Abilities
                 target.TakeDamage(damage);
             }
 
-            // Взрываемся при любом столкновении
+            // Взрываемся при любом столкновении, будь то забор, стена или враг
             Destroy(gameObject);
         }
     }

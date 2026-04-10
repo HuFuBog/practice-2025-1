@@ -44,7 +44,7 @@ namespace Roguelike.Combat
         {
             if (CurrentHealth <= 0) return;
 
-            // 1. Уклонение
+            // Уклонение
             if (UnityEngine.Random.Range(0f, 100f) <= Evasion.GetValue())
             {
                 Debug.Log($"{gameObject.name} уклонился!");
@@ -53,34 +53,41 @@ namespace Roguelike.Combat
 
             float finalDamage = damage.Amount;
 
-            // 2. Резисты стихиям (кроме TrueDamage)
+            // Резисты стихиям (кроме TrueDamage)
             if (damage.Type != DamageType.TrueDamage && resistanceDict.TryGetValue(damage.Type, out float resist))
             {
                 finalDamage *= 1f - resist;
             }
 
-            // 3. Броня (только для физ урона)
+            // Броня (только для физ урона)
             if (damage.Type == DamageType.Physical)
             {
                 float armorVal = Armor.GetValue();
-                // Формула: чем больше брони, тем меньше входящий урон, но иммунитета не достичь
+                // Чем больше брони, тем меньше входящий урон, но иммунитета не достичь
                 finalDamage *= (100f / (100f + Mathf.Max(0, armorVal)));
             }
 
-            // Минимальный урон 1, чтобы не было нулевого урона
+            // Минимальный урон 1, чтобы не было нулевого урона, хотя в будущем можно попробовать проработать сценарии с отрицательным уроном
             finalDamage = Mathf.Max(1f, finalDamage);
 
             CurrentHealth -= finalDamage;
 
             // Вызываем ивенты
+            // "?" - для проверки не равен ли делегат null?
             OnDamageTaken?.Invoke(new DamageInfo(finalDamage, damage.Type, damage.Source, damage.IsCritical));
             OnHealthChanged?.Invoke(CurrentHealth, baseData.maxHealth);
 
-            if (CurrentHealth <= 0) Die();
+            if (CurrentHealth <= 0)
+            {
+                // Здоровье не может быть отрицательным, ведь в будущем возможны баги отображения интерфейса
+                CurrentHealth = 0;
+                Die();
+            }
         }
 
         public void Heal(float amount)
         {
+            // не имеет смысла хилить персонажа если здоровье итак полное
             if (CurrentHealth <= 0) return;
             CurrentHealth = Mathf.Min(CurrentHealth + amount, baseData.maxHealth);
             OnHealthChanged?.Invoke(CurrentHealth, baseData.maxHealth);

@@ -30,6 +30,7 @@ namespace Roguelike.Core.Stats
 
         public float GetValue()
         {
+            // ВАЖНО - считаем отдельно плоскую добавку и процентную, чтобы не получить ошибки связанные с порядком проверки модификатора.
             float finalValue = baseValue;
             float percentAdd = 0f;
 

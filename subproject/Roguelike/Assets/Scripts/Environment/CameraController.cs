@@ -17,6 +17,9 @@ namespace Roguelike.Environment
                 target = defaultTarget;
             }
         }
+
+        // В будущем подразумевается, что будет присутствовать какой то гипервизор или менеджер,
+        // который будет управлять привязкой камеры к объекту
         public void Lock(Transform target)
         {
             if (isLocked) return;
