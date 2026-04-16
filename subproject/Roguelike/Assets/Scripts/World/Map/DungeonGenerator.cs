@@ -15,6 +15,10 @@ namespace Roguelike.World.Map
         // Храним ссылки на логику сгенерированных комнат
         private Dictionary<Vector2Int, DungeonRoom> instantiatedRooms = new Dictionary<Vector2Int, DungeonRoom>();
 
+        void Awake()
+        {
+            GenerateDungeon();
+        }
         public void GenerateDungeon()
         {
             // Очистка старого подземелья

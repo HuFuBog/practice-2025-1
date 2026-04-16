@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Roguelike.Data.DungeonGeneratorData
   dungeonName: TestDungeon
   description: ONLY FOR TESTING!!!
+  roomAtStepChance: 0
   roomGroups:
-  - roomVariants:
+  - roomType: 0
+    roomVariants:
+    - {fileID: 11400000, guid: 7403af0b4eaca4e6ab276affc0b2912e, type: 2}
+    count: 1
+  - roomType: 2
+    roomVariants:
     - {fileID: 11400000, guid: e7131bd2351799e0993423fccfdf2c92, type: 2}
-    minCount: 4
-    maxCount: 9
+    count: 5
+  - roomType: 1
+    roomVariants:
+    - {fileID: 11400000, guid: 7b1f81cd743919b8693bd50b8948c165, type: 2}
+    count: 1
