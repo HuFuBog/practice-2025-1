@@ -16,4 +16,4 @@ MonoBehaviour:
   roomName: startRoom
   roomPosition: {x: 0, y: 0}
   description: 
-  roomPrefab: {fileID: 9180055489421106155, guid: af865af340a46dd738770ca1077cc233, type: 3}
+  roomPrefab: {fileID: 4039453005119764958, guid: 2e5961a8356f8e1d59331c4c2660f2dd, type: 3}

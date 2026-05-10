@@ -1,0 +1,23 @@
+{
+    "include_extensions": [
+        ".cs",
+        ".json"
+    ],
+    "exclude_files": [
+        "__init__.py",
+        "project_files_dump.txt"
+    ],
+    "exclude_dirs": [
+        ".git",
+        "venv",
+        "env",
+        "__pycache__",
+        ".idea",
+        ".vscode",
+        "node_modules",
+        "Settings",
+        "TextMesh Pro",
+        "Textures",
+        "Packages"
+    ]
+}
