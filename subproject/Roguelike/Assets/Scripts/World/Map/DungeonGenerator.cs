@@ -127,6 +127,7 @@ namespace Roguelike.World.Map
                 DungeonRoom roomComponent = roomGo.GetComponent<DungeonRoom>();
                 if (roomComponent != null)
                 {
+                    roomComponent.Initialize(roomData.roomType);
                     instantiatedRooms.Add(gridPos, roomComponent);
                 }
                 else
