@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Roguelike.Data.AbilityData
   abilityName: Fireball
   description: 
-  cooldown: 1
+  cooldown: 0.1
   damageAmount: 10
   damageType: 1
   executionPrefab: {fileID: 6835212982274940390, guid: 22dc24b54b74981f9aa12d14b8eef915, type: 3}
