@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem; // Подключаем новую систему ввода
-
+using Roguelike.Core.Interfaces;
 namespace Roguelike.Actors.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -34,6 +34,9 @@ namespace Roguelike.Actors.Player
         private float dashTimer;
         private int originalLayer;
 
+        private InputAction interactAction;
+        private IInteractable currentInteractable;
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -47,6 +50,7 @@ namespace Roguelike.Actors.Player
             attackAction = playerInput.actions["Attack"];
             skillAction = playerInput.actions["Skill"];
             ultimateAction = playerInput.actions["Ultimate"];
+            interactAction = playerInput.actions["Interact"];
 
             rb.gravityScale = 0f;
             originalLayer = gameObject.layer;
@@ -71,6 +75,11 @@ namespace Roguelike.Actors.Player
 
             if (skillAction.WasPressedThisFrame()) abilities.UseSkill(lastLookDir);
             if (ultimateAction.WasPressedThisFrame()) abilities.UseUltimate(lastLookDir);
+
+            if (interactAction.WasPressedThisFrame() && currentInteractable != null)
+            {
+                currentInteractable.Interact(gameObject);
+            }
         }
 
         private void FixedUpdate()
@@ -96,6 +105,24 @@ namespace Roguelike.Actors.Player
 
             gameObject.layer = originalLayer;
             isDashing = false;
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out IInteractable interactable))
+            {
+                currentInteractable = interactable;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out IInteractable interactable))
+            {
+                if (currentInteractable == interactable)
+                {
+                    currentInteractable = null;
+                }
+            }
         }
     }
 }

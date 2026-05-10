@@ -47,5 +47,11 @@ namespace Roguelike.Actors.Player
                 }
             }
         }
+        public void ResetCooldowns()
+        {
+            attackTimer = 0f;
+            skillTimer = 0f;
+            ultimateTimer = 0f;
+        }
     }
 }

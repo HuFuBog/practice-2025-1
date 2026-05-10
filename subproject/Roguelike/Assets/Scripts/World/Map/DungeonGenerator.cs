@@ -157,5 +157,19 @@ namespace Roguelike.World.Map
                 room.SetupDoors(hasTop, hasBottom, hasLeft, hasRight);
             }
         }
+        public void ClearAndRegenerate()
+        {
+            // Уничтожаем абсолютно все дочерние объекты в контейнере подземелья
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+
+            // Очищаем словарь
+            instantiatedRooms.Clear();
+
+            // Запускаем генерацию заново
+            GenerateDungeon();
+        }
     }
 }
