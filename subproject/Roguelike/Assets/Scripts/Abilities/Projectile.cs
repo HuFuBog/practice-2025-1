@@ -2,6 +2,7 @@ using UnityEngine;
 using Roguelike.Core.Interfaces;
 using Roguelike.Combat;
 using Roguelike.Data;
+using Roguelike.World.Map;
 
 namespace Roguelike.Abilities
 {
@@ -33,6 +34,8 @@ namespace Roguelike.Abilities
         {
             // Игнорируем того, кто запустил снаряд, потому что кто хочет получить сам от себя?
             if (collision.gameObject == source) return;
+            // мы можем сталкиваться с комнатой(так как она вся имеет коллайдер)
+            if (collision.gameObject.tag == "Room") return;
 
             // Если у объекта есть система здоровья - наносим урон, очевидно это враг
             if (collision.TryGetComponent(out IDamageable target))
@@ -47,7 +50,6 @@ namespace Roguelike.Abilities
                 target.TakeDamage(damage);
             }
 
-            // Взрываемся при любом столкновении, будь то забор, стена или враг
             Destroy(gameObject);
         }
     }
