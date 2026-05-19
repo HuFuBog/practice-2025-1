@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Roguelike.Environment
@@ -21,6 +22,8 @@ namespace Roguelike.Environment
         private float rightClosedX = 0f;
         private float leftOpenX;
         private float rightOpenX;
+
+        [SerializeField] private GameObject bonuses;
 
         private void Awake()
         {
