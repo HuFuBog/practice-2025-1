@@ -23,7 +23,6 @@ namespace Roguelike.Environment
         private float leftOpenX;
         private float rightOpenX;
 
-        [SerializeField] private GameObject bonuses;
 
         private void Awake()
         {
