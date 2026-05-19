@@ -83,8 +83,8 @@ def collect_files(root_path_str):
 
 if __name__ == "__main__":
     print("=== Сборщик кода проекта ===")
-    target_dir = input("Введите полный путь к корневой папке проекта: ").strip()
-    
+    # target_dir = input("Введите полный путь к корневой папке проекта: ").strip()
+    target_dir = "/home/kirieshka/practice-2025-1/subproject/Roguelike/Assets/".strip()
     # Убираем кавычки, если путь был скопирован через "Copy as path" в Windows или что то подобное
     if target_dir.startswith('"') and target_dir.endswith('"'):
         target_dir = target_dir[1:-1]
